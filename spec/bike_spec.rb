@@ -26,6 +26,3 @@ describe Bike do
 
 end
 
-
-# can break
-# can be fixed
