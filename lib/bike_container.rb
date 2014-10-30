@@ -1,3 +1,10 @@
+class NoBikeError < Exception
+  def message
+    "Bike not here"
+  end
+end
+
+
 module BikeContainer
 
   DEFAULT_CAPACITY = 10
@@ -24,7 +31,8 @@ module BikeContainer
   end
 
   def release(bike)
-    bikes.delete(bike)
+    raise NoBikeError unless bikes.include?(bike)
+    bikes.delete(bike)  
   end
 
   def full?
