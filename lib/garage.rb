@@ -23,5 +23,9 @@ class Garage
 
   end
 
+  def fix_bikes
+    bikes.map { |bike| bike.fix! }
+  end
+
 
 end

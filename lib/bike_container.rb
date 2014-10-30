@@ -35,8 +35,4 @@ module BikeContainer
     bikes.reject { |bike| bike.broken? }
   end
 
-  # def fix_bikes
-  #   bikes.map! { |bike| bike.fix! }
-  # end
-
 end
