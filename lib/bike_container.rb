@@ -4,6 +4,18 @@ class NoBikeError < Exception
   end
 end
 
+class HolderFull < Exception
+  def message
+    "The container is full"
+  end
+end
+
+class BikesOnlyError < Exception
+  def message
+    "Please only use bikes, no other objects"
+  end
+end
+
 
 module BikeContainer
 
@@ -26,7 +38,8 @@ module BikeContainer
   end
 
   def dock(bike)
-    raise "Station is full" if full?
+    raise BikesOnlyError unless bike.is_a?(Bike)
+    raise HolderFull if full?
     bikes << bike
   end
 
@@ -41,6 +54,10 @@ module BikeContainer
 
   def available_bikes
     bikes.reject { |bike| bike.broken? }
+  end
+
+  def empty?
+    bike_count == 0
   end
 
 end
