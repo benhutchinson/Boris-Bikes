@@ -25,6 +25,12 @@ describe 'Garage' do
     ####### i can't get this to work.
 
   end
+
+  it "v2. auto-fixes bikes on arrival" do
+    broken_bike.break!
+    garage.accept(broken_bike)
+    expect(broken_bike).not_to be_broken
+  end
   
 
 end
