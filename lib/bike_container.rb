@@ -64,8 +64,12 @@ module BikeContainer
   end
 
   def has_broken_bikes?
-    arr = bikes.map {|bike| bike.broken?}
-    arr.empty?
+    arr = bikes.select {|bike| bike.broken?}
+    !arr.empty?
+    # i.e. if it has broken bikes, returns true
+    # empty is negated here, since selecting
+    # an array that does actually contain
+    # broken instances.
   end
 
 end

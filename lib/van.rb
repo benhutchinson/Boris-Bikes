@@ -23,4 +23,15 @@ class Van
 
   end
 
+  def arrives(station)
+    if station.has_broken_bikes?
+      true
+    else
+      false
+    end
+  end
+
+  def collect(station)
+  end
+
 end

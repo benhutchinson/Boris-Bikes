@@ -23,7 +23,7 @@ describe DockingStation do
     station.dock(broken_bike)
     station.dock(working_bike)
     # expect(station.bike_count).to eq 2
-    expect(station.has_broken_bikes?).to be false
+    expect(station.has_broken_bikes?).to be true
   end  
 
 end
