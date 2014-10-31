@@ -1,4 +1,4 @@
-require 'bike'
+require './lib/bike'
 
 describe Bike do
   

@@ -1,11 +1,11 @@
-require './lib/bike_container'
+require 'bike_container'
 
-class ContainerHolder; include BikeContainer; end
+# class ContainerHolder; include BikeContainer; end
 
-describe BikeContainer do
+shared_examples "a Bike Container" do
 
   let(:bike) { Bike.new }
-  let(:holder) { ContainerHolder.new }
+  let(:holder) { described_class.new }
   let(:fiction_bike) {Bike.new }
   let(:donkey) {Object.new}
 

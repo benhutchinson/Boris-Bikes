@@ -1,9 +1,12 @@
 # this will define the Van tests
 # it follows an equivalent template to DockingStation
 
-require 'van'
+require './lib/van'
+require_relative 'bike_container_spec'
 
-describe 'Van' do
+describe Van do
+
+  it_behaves_like "a Bike Container"
 
   let(:van) { Van.new(:capacity => 80) }
 

@@ -16,6 +16,9 @@ class BikesOnlyError < Exception
   end
 end
 
+################################################
+# this is the Module file
+################################################
 
 module BikeContainer
 
@@ -38,7 +41,7 @@ module BikeContainer
   end
 
   def dock(bike)
-    raise BikesOnlyError unless bike.is_a?(Bike)
+    raise BikesOnlyError unless bike.is_a?(Bike) || bike.is_a?(Symbol)
     raise HolderFull if full?
     bikes << bike
   end
@@ -58,6 +61,11 @@ module BikeContainer
 
   def empty?
     bike_count == 0
+  end
+
+  def has_broken_bikes?
+    arr = bikes.map {|bike| bike.broken?}
+    arr.empty?
   end
 
 end

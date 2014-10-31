@@ -1,10 +1,13 @@
 # this will define the Garage tests
 # it follows an equivalent template to DockingStation
 
-require 'garage'
+require './lib/garage'
+require_relative 'bike_container_spec'
 # require 'bike'
 
-describe 'Garage' do
+describe Garage do
+
+  it_behaves_like 'a Bike Container'
 
   let(:garage) { Garage.new(:capacity => 1000) }
   let(:broken_bike) { Bike.new }
@@ -31,7 +34,7 @@ describe 'Garage' do
     garage.accept(broken_bike)
     expect(broken_bike).not_to be_broken
   end
-  
+
 
 end
 
