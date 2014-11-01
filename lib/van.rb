@@ -32,6 +32,11 @@ class Van
   end
 
   def collect(station)
+    if station.has_fixed_bikes?
+      true
+    else
+      false
+    end
   end
 
 end

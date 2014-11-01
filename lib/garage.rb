@@ -32,4 +32,9 @@ class Garage
     dock(bike)
   end
 
+  def has_fixed_bikes?
+    fixed_bikes = bikes.select { |bike| !bike.broken?}
+    !fixed_bikes.empty?
+  end
+
 end

@@ -6,8 +6,8 @@ describe DockingStation do
 
   it_behaves_like 'a Bike Container'
 
-  let(:broken_bike) {double :bike, {:broken? => true, :is_a? => true}}
-  let(:working_bike) {double :bike, {:broken? => false, :is_a? => true}}
+  let(:broken_bike) {double :bike, :broken? => true, :is_a? => true}
+  let(:working_bike) {double :bike, :broken? => false, :is_a? => true}
   let(:station) { DockingStation.new(:capacity => 123) }
 
   it "should allow setting default capacity on initialising" do

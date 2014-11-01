@@ -35,6 +35,11 @@ describe Garage do
     expect(broken_bike).not_to be_broken
   end
 
+  it "should know if it has fixed bikes" do
+    broken_bike.break!
+    garage.accept(broken_bike)
+    expect(garage.has_fixed_bikes?).to be true
+  end
 
 end
 
