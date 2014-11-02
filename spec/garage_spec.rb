@@ -11,7 +11,7 @@ describe Garage do
 
   let(:garage) { Garage.new(:capacity => 1000) }
   let(:broken_bike) { Bike.new }
-  let(:van) {double :van, :arrives_at_garage => true, :dock => :test_fixed_bike}
+  let(:van) {double :van, :arrives_at_garage => true, :bikes => true, :takes_fixed_bikes => true}
 
   it "should allow setting default capacity on initialising" do
     expect(garage.capacity).to eq(1000)
@@ -46,6 +46,12 @@ describe Garage do
     broken_bike.break!
     garage.accept(broken_bike)
     expect(garage.all_bikes_fixed?).to be true 
+  end
+
+  it "should have no bikes after the van has collected them" do
+    garage.releases_fixed_bikes_for_transfer(van)
+    expect(garage.bike_count).to be 0 
+    expect(garage.bikes_for_transfer.count).to be 0 
   end
 
 end

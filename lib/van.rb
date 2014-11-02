@@ -31,12 +31,24 @@ class Van
     end
   end
 
-  def collects_from_station(station)
-    bikes << station.bikes_in_transit
-  end
-
   def arrives_at_garage(station)
     station.has_fixed_bikes?
+  end
+
+  def releases_bikes_to_garage(garage)
+    garage.accept(bikes)
+    bikes.clear
+    true
+  end
+
+  def takes_fixed_bikes
+    dock(garage.bikes_for_transfer)
+    true
+  end
+
+  def releases_bikes_to_docking_station(station)
+    station.dock(bikes)
+    bikes.clear
   end
 
 end

@@ -40,9 +40,9 @@ module BikeContainer
     @bikes ||= []
   end
 
-  # def bikes_in_transit
-  #   @bikes_in_transit ||= []
-  # end
+  def bikes_for_transfer
+    @bikes_for_transfer ||= []
+  end
   
   def capacity
     @capacity ||= DEFAULT_CAPACITY

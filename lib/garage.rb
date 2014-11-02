@@ -41,5 +41,10 @@ class Garage
     true if bikes.select { |bike| !bike.broken?} == bikes
   end
 
-
+  def releases_fixed_bikes_for_transfer(van)
+    bikes_for_transfer << bikes
+    van.takes_fixed_bikes
+    bikes.clear
+    bikes_for_transfer.clear
+  end
 end
