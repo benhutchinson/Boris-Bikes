@@ -9,12 +9,12 @@ describe Van do
   it_behaves_like "a Bike Container"
 
   let(:van) { Van.new(:capacity => 80) }
-  let(:station_broken) { double :station, :has_broken_bikes? => true, :bikes_in_transit => :collect_bike}
+  let(:station_broken) { double :station, :has_broken_bikes? => true}
   let(:station_working) { double :station, :has_broken_bikes? => false }
   let(:garage_has_fixed_bikes) { double :garage, :has_fixed_bikes? => true, :all_bikes_fixed? => true }
   let(:garage_no_fixed_bikes) { double :garage, :has_fixed_bikes? => false }
   let(:garage) { double :garage, :accept => true, :has_fixed_bikes? => true, :bikes_for_transfer => true}
-  let(:station) { double :station, :dock => true}
+  let(:station) { double :station, :dock => true, :bikes_for_transfer => true}
 
   it "should allow setting default capacity on initialising" do
     expect(van.capacity).to eq(80)

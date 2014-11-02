@@ -90,10 +90,11 @@ module BikeContainer
     # broken instances.
   end
 
-  # def transfers_bikes_away(broken_or_not = true)
-  #   bikes_for_transfer = bikes.select {|bike| bike.broken? == broken_or_not}
-  #   bikes_in_transit.push(bikes_for_transfer)
-  #   bikes.delete_if { |bike| bikes_for_transfer.include?(bike) }
-  # end
+  def transfers_bikes_away(van)
+    bikes_for_transfer << bikes.select {|bike| bike.broken? == true}
+    bikes.delete_if { |bike| bike.broken? == true }
+    van.takes_broken_bikes
+    bikes_for_transfer.clear
+  end
 
 end

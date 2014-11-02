@@ -51,4 +51,8 @@ class Van
     bikes.clear
   end
 
+  def takes_broken_bikes
+    dock(station.bikes_for_transfer)
+  end
+
 end
