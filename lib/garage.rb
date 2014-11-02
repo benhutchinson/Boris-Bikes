@@ -37,4 +37,9 @@ class Garage
     !fixed_bikes.empty?
   end
 
+  def all_bikes_fixed?
+    true if bikes.select { |bike| !bike.broken?} == bikes
+  end
+
+
 end

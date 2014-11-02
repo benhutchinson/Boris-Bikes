@@ -23,7 +23,7 @@ class Van
 
   end
 
-  def arrives(station)
+  def arrives_at_docking(station)
     if station.has_broken_bikes?
       true
     else
@@ -31,12 +31,12 @@ class Van
     end
   end
 
-  def collect(station)
-    if station.has_fixed_bikes?
-      true
-    else
-      false
-    end
+  def collects_from_station(station)
+    bikes << station.bikes_in_transit
+  end
+
+  def arrives_at_garage(station)
+    station.has_fixed_bikes?
   end
 
 end

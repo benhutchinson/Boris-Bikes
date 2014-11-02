@@ -13,6 +13,15 @@ shared_examples "a Bike Container" do
     holder.capacity.times { holder.dock(Bike.new) }
   end
 
+  it "should have capacity defined as a positive integer amount" do 
+    expect(holder.capacity.is_a? Integer).to be true
+  end
+
+  it "should raise an error if capacity is not a positive integer" do
+    expect{holder.capacity=("string")}.to raise_error(CapacityShouldBePositiveInteger)
+    expect{holder.capacity=(-5)}.to raise_error(CapacityShouldBePositiveInteger)
+  end
+
   it 'Should only dock or release bikes; no other kinds of things' do
     expect{ holder.dock(donkey) }.to raise_error(BikesOnlyError)
   end

@@ -16,6 +16,18 @@ class BikesOnlyError < Exception
   end
 end
 
+class CapacityShouldBePositiveInteger < Exception
+  def message
+    "Object Capacity Must Be Defined As A Positive Integer"
+  end
+end
+
+class OnlyAcceptsFixedBikes < Exception
+  def message
+    "Van Should Only Accept From Garage When Bikes Fixed"
+  end
+end
+
 ################################################
 # this is the Module file
 ################################################
@@ -28,12 +40,18 @@ module BikeContainer
     @bikes ||= []
   end
 
+  # def bikes_in_transit
+  #   @bikes_in_transit ||= []
+  # end
+  
   def capacity
     @capacity ||= DEFAULT_CAPACITY
   end
 
   def capacity=(value)
     @capacity = value
+    raise CapacityShouldBePositiveInteger unless @capacity.is_a? Integer
+    raise CapacityShouldBePositiveInteger if @capacity < 0
   end
 
   def bike_count
@@ -71,5 +89,11 @@ module BikeContainer
     # an array that does actually contain
     # broken instances.
   end
+
+  # def transfers_bikes_away(broken_or_not = true)
+  #   bikes_for_transfer = bikes.select {|bike| bike.broken? == broken_or_not}
+  #   bikes_in_transit.push(bikes_for_transfer)
+  #   bikes.delete_if { |bike| bikes_for_transfer.include?(bike) }
+  # end
 
 end
